@@ -1,3 +1,5 @@
+tasks=[]
+
 while True:
     print("=========== Welcome to the TO DO LIST App ===========")
     print('''
@@ -10,14 +12,25 @@ while True:
     
     try:
         choice=int(input("Enter your choice: "))
-        print(f"You selected option {choice}.")
+        # print(f"You selected option {choice}.")
     
     
         if choice==1:
             print("Add Task selected")
+            task=input("\n Enter ur task name: ")
+            tasks.append(task)
+            
+            print("Task added successfully!")
+            print(tasks)
             
         elif choice==2:
-            print("View Task selected")
+            print("\n Option 2 - View Task selected")
+            if tasks == []:
+                print("No tasks available")
+            else:
+                print("============ YOUR TASKS ============")
+                for task in tasks:
+                    print(tasks)
             
         elif choice==3:
             print("Complete Task selected")
@@ -32,4 +45,5 @@ while True:
             print("Invalid Choice")
         
     except ValueError:
-        print("Invalid Input. Plz enter INTEGER only.")
+        print("Invalid input! Please enter a number between 1 and 5.")
+    print()

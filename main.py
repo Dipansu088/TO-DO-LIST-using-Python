@@ -14,7 +14,7 @@ while True:
         choice=int(input("Enter your choice: "))    
     
         if choice==1:
-            print("\n===| Add Task |===")
+            print("\n============| Add Task |============")
             task=input("\nEnter task name: ")
             tasks.append(task)
             
@@ -25,15 +25,15 @@ while True:
             if not tasks:
                 print("No tasks available")
             else:
-                print("============| YOUR TASKS |============")
+                print("\n============| YOUR TASKS |============")
                 for number, task in enumerate(tasks, start=1):
                     print(f"{number}. {task}")
             
         elif choice==3:
-            print("\n===| Complete Task |===")
+            print("\n============| Complete Task |============")
         
         elif choice==4:
-            print("===| Delete Task |===")
+            print("\n============| Delete Task |============")
             # n=int(input("Enter the task number to delete: "))
             if not tasks:
                 print("\nNo tasks available to delete.")

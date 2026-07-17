@@ -15,7 +15,7 @@ while True:
     
         if choice==1:
             print("\n===| Add Task |===")
-            task=input("\nEnter ur task name: ")
+            task=input("\nEnter task name: ")
             tasks.append(task)
             
             print("Task added successfully!")
@@ -58,4 +58,4 @@ while True:
         
     except ValueError:
         print("Invalid input! Please enter a number between 1 and 5.")
-    print()
+    print("----------------------------------------")

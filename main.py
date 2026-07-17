@@ -1,7 +1,7 @@
 tasks=[]
 
 while True:
-    print("=========== Welcome to the TO DO LIST App ===========")
+    print("\n===========| Welcome to the TO DO LIST App |===========")
     print('''
         1) Add Task
         2) View Task
@@ -11,19 +11,17 @@ while True:
         ''')
     
     try:
-        choice=int(input("Enter your choice: "))
-        # print(f"You selected option {choice}.")
-    
+        choice=int(input("Enter your choice: "))    
     
         if choice==1:
-            print("===| Add Task |===")
+            print("\n===| Add Task |===")
             task=input("\nEnter ur task name: ")
             tasks.append(task)
             
             print("Task added successfully!")
             
         elif choice==2:
-            print("===| View Task |===")
+            # print("\n===| View Task |===")
             if not tasks:
                 print("No tasks available")
             else:
@@ -32,18 +30,18 @@ while True:
                     print(f"{number}. {task}")
             
         elif choice==3:
-            print("===| Complete Task |===")
+            print("\n===| Complete Task |===")
         
         elif choice==4:
             print("===| Delete Task |===")
             # n=int(input("Enter the task number to delete: "))
             if not tasks:
-                print("No tasks available to delete.")
+                print("\nNo tasks available to delete.")
             else:
-                print("=======| YOUR TASKS |=======")
+                print("\n=======| YOUR TASKS |=======")
                 for number, task in enumerate(tasks, start=1):
                     print(f"{number}. {task}")
-                n=int(input("Enter task number to delete! : "))
+                n=int(input("\nEnter task number to delete: "))
                 if n>=1 and n<=len(tasks):
                     actual_index=n-1
                     deleted=tasks.pop(actual_index)

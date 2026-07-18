@@ -44,13 +44,13 @@ while True:
                 print("\nNo tasks available to delete.")
             else:
                 print("\n=======| YOUR TASKS |=======")
-                for number, task in enumerate(tasks, start=1):
-                    print(f"{number}. {task}")
+                for number, task_item in enumerate(tasks, start=1):
+                    print(f"{number}. {task_item['task']}")
                 n=int(input("\nEnter task number to delete: "))
                 if n>=1 and n<=len(tasks):
                     actual_index=n-1
                     deleted=tasks.pop(actual_index)
-                    print(f"Task '{deleted}' deleted successfully!!")
+                    print(f"Task '{deleted['task']}' deleted successfully!!")
                 else:
                     print("Plz enter a valid task number...")
             

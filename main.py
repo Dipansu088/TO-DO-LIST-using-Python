@@ -16,7 +16,10 @@ while True:
         if choice==1:
             print("\n============| Add Task |============")
             task=input("\nEnter task name: ")
-            tasks.append(task)
+            tasks.append({
+                "task": task,
+                "completed": False
+            })
             
             print("Task added successfully!")
             
@@ -26,8 +29,10 @@ while True:
                 print("No tasks available")
             else:
                 print("\n============| YOUR TASKS |============")
-                for number, task in enumerate(tasks, start=1):
-                    print(f"{number}. {task}")
+                # for number, task in enumerate(tasks, start=1):
+                #     print(f"{number}. {task}")
+                for number, task_item in enumerate(tasks, start=1):
+                    print(f"{number}. {task_item['task']}")            
             
         elif choice==3:
             print("\n============| Complete Task |============")

@@ -1,5 +1,83 @@
 tasks=[]
 
+def add_task():                                                                              #ADD TASK
+    print("\n============| Add Task |============")
+    task=input("\nEnter task name: ")
+    tasks.append({
+        "task": task,
+        "completed": False
+        })
+    print("Task added successfully!")
+    
+def view_tasks():                                                                            #VIEW TASKS
+    print("\n============| View Task |============")
+            
+    if not tasks:
+        print("No tasks available")
+    else:
+        print("\n============| YOUR TASKS |============")
+        
+        for number, task_item in enumerate(tasks, start=1):
+            if task_item['completed'] is True:
+                print(f"{number}. {task_item['task']} - Completed") 
+            else:
+                print(f"{number}. {task_item['task']} - Incomplete")
+                
+def complete_task():                                                                         #COMPLETE TASK
+    print("\n============| Complete Task |============")
+            
+    if not tasks:
+        print("\nNo tasks available to mark.")
+    else:
+        print("\n=======| YOUR TASKS |=======")
+        display_tasks()
+                
+        n=int(input("\nEnter task number to complete: "))
+        if n>=1 and n<=len(tasks):
+            actual_index=n-1
+            tasks[actual_index]['completed']=True
+            print(f"Task {tasks[actual_index]['task']} marked as completed!")
+        else:
+            print("Please enter a valid task number.")
+                    
+def delete_task():                                                                           #DELETE TASK
+    print("\n============| Delete Task |============")
+            
+    if not tasks:
+        print("\nNo tasks available to delete.")
+    else:
+        print("\n=======| YOUR TASKS |=======")
+        display_tasks()
+                
+        n=int(input("\nEnter task number to delete: "))
+        if n>=1 and n<=len(tasks):
+            actual_index=n-1
+            deleted=tasks.pop(actual_index)
+            print(f"Task '{deleted['task']}' deleted successfully!!")
+        else:
+            print("Plz enter a valid task number.")
+                    
+def mark_incomplete():                                                                       #INCOMPLETE TASK
+    print("\n============| Mark Incomplete |============")
+            
+    if not tasks:
+        print("\nNo tasks available to mark.")
+    else:
+        print("\n=======| YOUR TASKS |=======")
+        display_tasks()
+                    
+        n = int(input("\nEnter task number to mark incomplete: "))  
+        if n>=1 and n<=len(tasks):
+            actual_index=n-1
+            tasks[actual_index]['completed']=False
+            print(f"Task {tasks[actual_index]['task']} marked as incomplete!")
+        else:
+            print("Please enter a valid task number.")
+
+def display_tasks():
+    for number, task_item in enumerate(tasks, start=1):
+        print(f"{number}. {task_item['task']}")
+
 while True:
     print("\n===========| Welcome to the TO DO LIST App |===========")
     print('''
@@ -15,82 +93,24 @@ while True:
         choice=int(input("Enter your choice: "))    
     
         if choice==1:
-            print("\n============| Add Task |============")
-            task=input("\nEnter task name: ")
-            tasks.append({
-                "task": task,
-                "completed": False
-            })
-            
-            print("Task added successfully!")
+            add_task()
             
         elif choice==2:
-            print("\n============| View Task |============")
-            if not tasks:
-                print("No tasks available")
-            else:
-                print("\n============| YOUR TASKS |============")
-                for number, task_item in enumerate(tasks, start=1):
-                    if task_item['completed'] is True:
-                        print(f"{number}. {task_item['task']} - Completed") 
-                    else:
-                        print(f"{number}. {task_item['task']} - Incomplete")
+            view_tasks()
                              
-            
         elif choice==3:
-            print("\n============| Complete Task |============")
-            if not tasks:
-                print("\nNo tasks available to mark.")
-            else:
-                print("\n=======| YOUR TASKS |=======")
-                for number, task_item in enumerate(tasks, start=1):
-                    print(f"{number}. {task_item['task']}")
-                n=int(input("\nEnter task number to complete: "))
-                if n>=1 and n<=len(tasks):
-                    actual_index=n-1
-                    tasks[actual_index]['completed']=True
-                    print(f"Task {tasks[actual_index]['task']} marked as completed!")
-                else:
-                    print("Please enter a valid task number.")
+            complete_task()
         
         elif choice==4:
-            print("\n============| Delete Task |============")
-            if not tasks:
-                print("\nNo tasks available to delete.")
-            else:
-                print("\n=======| YOUR TASKS |=======")
-                for number, task_item in enumerate(tasks, start=1):
-                    print(f"{number}. {task_item['task']}")
-                n=int(input("\nEnter task number to delete: "))
-                if n>=1 and n<=len(tasks):
-                    actual_index=n-1
-                    deleted=tasks.pop(actual_index)
-                    print(f"Task '{deleted['task']}' deleted successfully!!")
-                else:
-                    print("Plz enter a valid task number.")
+            delete_task()
             
-
         elif choice==5:
             print("Exiting...")
             break
         
         elif choice==6:
-            print("\n============| Mark as Incomplete |============")
-            if not tasks:
-                print("\nNo tasks available to mark.")
-            else:
-                print("\n=======| YOUR TASKS |=======")
-                for number, task_item in enumerate(tasks, start=1):
-                    print(f"{number}. {task_item['task']}")
-                n=int(input("\nEnter task number to complete: "))
-                if n>=1 and n<=len(tasks):
-                    actual_index=n-1
-                    tasks[actual_index]['completed']=False
-                    print(f"Task {tasks[actual_index]['task']} marked as incomplete!")
-                else:
-                    print("Please enter a valid task number.")
+            mark_incomplete()
 
-        
         else:
             print("Invalid Choice")
         

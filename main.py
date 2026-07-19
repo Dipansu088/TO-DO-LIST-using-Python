@@ -25,15 +25,17 @@ while True:
             print("Task added successfully!")
             
         elif choice==2:
-            # print("\n===| View Task |===")
+            print("\n============| View Task |============")
             if not tasks:
                 print("No tasks available")
             else:
                 print("\n============| YOUR TASKS |============")
-                # for number, task in enumerate(tasks, start=1):
-                #     print(f"{number}. {task}")
                 for number, task_item in enumerate(tasks, start=1):
-                    print(f"{number}. {task_item['task']}")            
+                    if task_item['completed'] is True:
+                        print(f"{number}. {task_item['task']} - Completed") 
+                    else:
+                        print(f"{number}. {task_item['task']} - Incomplete")
+                             
             
         elif choice==3:
             print("\n============| Complete Task |============")
@@ -48,6 +50,8 @@ while True:
                     actual_index=n-1
                     tasks[actual_index]['completed']=True
                     print(f"Task {tasks[actual_index]['task']} marked as completed!")
+                else:
+                    print("Please enter a valid task number.")
         
         elif choice==4:
             print("\n============| Delete Task |============")
@@ -63,7 +67,7 @@ while True:
                     deleted=tasks.pop(actual_index)
                     print(f"Task '{deleted['task']}' deleted successfully!!")
                 else:
-                    print("Plz enter a valid task number...")
+                    print("Plz enter a valid task number.")
             
 
         elif choice==5:
@@ -83,10 +87,13 @@ while True:
                     actual_index=n-1
                     tasks[actual_index]['completed']=False
                     print(f"Task {tasks[actual_index]['task']} marked as incomplete!")
+                else:
+                    print("Please enter a valid task number.")
+
         
         else:
             print("Invalid Choice")
         
     except ValueError:
-        print("Invalid input! Please enter a number between 1 and 5.")
+        print("Invalid input! Please enter a number between 1 and 6.")
     print("----------------------------------------")

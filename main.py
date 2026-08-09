@@ -74,6 +74,10 @@ def mark_incomplete():                                                          
         else:
             print("Please enter a valid task number.")
 
+def clear_Tasks():
+    tasks.clear()
+    print("All tasks cleared successfully!")
+
 def display_tasks():
     for number, task_item in enumerate(tasks, start=1):
         print(f"{number}. {task_item['task']}")
@@ -87,6 +91,7 @@ while True:
         4) Delete Task
         5) Exit
         6) Mark Incomplete
+        7) Clear All Tasks
         ''')
     
     try:
@@ -110,6 +115,9 @@ while True:
         
         elif choice==6:
             mark_incomplete()
+            
+        elif choice==7:
+            clear_Tasks()
 
         else:
             print("Invalid Choice")

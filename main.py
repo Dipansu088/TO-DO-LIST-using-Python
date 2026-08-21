@@ -10,12 +10,12 @@ def add_task():                                                                 
     print("Task added successfully!")
     
 def view_tasks():                                                                            #VIEW TASKS
-    print("\n============| View Task |============")
+    print("\n============| View Task |============\n")
             
     if not tasks:
         print("No tasks available")
     else:
-        print("\n============| YOUR TASKS |============")
+        print("============| YOUR TASKS |============\n")
         
         for number, task_item in enumerate(tasks, start=1):
             if task_item['completed'] is True:
@@ -24,12 +24,12 @@ def view_tasks():                                                               
                 print(f"{number}. {task_item['task']} - Incomplete")
                 
 def complete_task():                                                                         #COMPLETE TASK
-    print("\n============| Complete Task |============")
+    print("\n============| Complete Task |============\n")
             
     if not tasks:
-        print("\nNo tasks available to mark.")
+        print("No tasks available to mark.")
     else:
-        print("\n=======| YOUR TASKS |=======")
+        print("=======| YOUR TASKS |=======")
         display_tasks()
                 
         n=int(input("\nEnter task number to complete: "))
@@ -124,4 +124,4 @@ while True:
         
     except ValueError:
         print("Invalid input! Please enter a number between 1 and 6.")
-    print("----------------------------------------")
+    print("------------------------------------")

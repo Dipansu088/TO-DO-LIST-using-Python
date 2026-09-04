@@ -1,4 +1,17 @@
+import json
 tasks=[]
+
+def load_tasks():
+    global tasks
+    try:
+        with open("tasks.json","r") as file:
+            tasks=json.load(file)
+    except FileNotFoundError:
+        tasks=[]
+        
+def save_tasks():
+    with open("tasks.json", "w") as file:
+        json.dump(tasks, file, indent=4)
 
 def add_task():                                                                              #ADD TASK
     print("\n============| Add Task |============")
@@ -7,11 +20,10 @@ def add_task():                                                                 
         "task": task,
         "completed": False
         })
+    save_tasks()
     print("Task added successfully!")
     
-def view_tasks():                                                                            #VIEW TASKS
-    print("\n============| View Task |============\n")
-            
+def view_tasks():                                                                            #VIEW TASK            
     if not tasks:
         print("No tasks available")
     else:
@@ -36,6 +48,7 @@ def complete_task():                                                            
         if n>=1 and n<=len(tasks):
             actual_index=n-1
             tasks[actual_index]['completed']=True
+            save_tasks()
             print(f"Task {tasks[actual_index]['task']} marked as completed!")
         else:
             print("Please enter a valid task number.")
@@ -53,7 +66,9 @@ def delete_task():                                                              
         if n>=1 and n<=len(tasks):
             actual_index=n-1
             deleted=tasks.pop(actual_index)
+            save_tasks()
             print(f"Task '{deleted['task']}' deleted successfully!!")
+            
         else:
             print("Plz enter a valid task number.")
                     
@@ -70,18 +85,21 @@ def mark_incomplete():                                                          
         if n>=1 and n<=len(tasks):
             actual_index=n-1
             tasks[actual_index]['completed']=False
+            save_tasks()
             print(f"Task {tasks[actual_index]['task']} marked as incomplete!")
         else:
             print("Please enter a valid task number.")
 
-def clear_Tasks():
+def clear_tasks():
     tasks.clear()
+    save_tasks()
     print("All tasks cleared successfully!")
 
 def display_tasks():
     for number, task_item in enumerate(tasks, start=1):
         print(f"{number}. {task_item['task']}")
 
+load_tasks()
 while True:
     print("\n===========| Welcome to the TO DO LIST App |===========")
     print('''
@@ -110,6 +128,7 @@ while True:
             delete_task()
             
         elif choice==5:
+            save_tasks()
             print("Exiting...")
             break
         
@@ -117,11 +136,10 @@ while True:
             mark_incomplete()
             
         elif choice==7:
-            clear_Tasks()
+            clear_tasks()
 
         else:
             print("Invalid Choice")
         
     except ValueError:
-        print("Invalid input! Please enter a number between 1 and 6.")
-    print("------------------------------------")
+        print("Invalid input! Please enter a number between 1 and 7.")

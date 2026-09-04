@@ -107,9 +107,9 @@ while True:
         2) View Task
         3) Complete Task
         4) Delete Task
-        5) Exit
-        6) Mark Incomplete
-        7) Clear All Tasks
+        5) Mark Incomplete
+        6) Clear All Tasks
+        7) Exit
         ''')
     
     try:
@@ -126,17 +126,17 @@ while True:
         
         elif choice==4:
             delete_task()
-            
+        
         elif choice==5:
+            mark_incomplete()
+            
+        elif choice==6:
+            clear_tasks()
+            
+        elif choice==7:
             save_tasks()
             print("Exiting...")
             break
-        
-        elif choice==6:
-            mark_incomplete()
-            
-        elif choice==7:
-            clear_tasks()
 
         else:
             print("Invalid Choice")

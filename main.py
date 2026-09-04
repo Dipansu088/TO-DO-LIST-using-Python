@@ -25,7 +25,7 @@ def add_task():                                                                 
     
 def view_tasks():                                                                            #VIEW TASK            
     if not tasks:
-        print("\nNo tasks available!!!\n")
+        print("\nNo tasks available!!!")
     else:
         print("============| YOUR TASKS |============\n")
         

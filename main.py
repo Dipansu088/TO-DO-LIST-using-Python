@@ -25,7 +25,7 @@ def add_task():                                                                 
     
 def view_tasks():                                                                            #VIEW TASK            
     if not tasks:
-        print("No tasks available")
+        print("\nNo tasks available!!!\n")
     else:
         print("============| YOUR TASKS |============\n")
         
@@ -39,9 +39,9 @@ def complete_task():                                                            
     print("\n============| Complete Task |============\n")
             
     if not tasks:
-        print("No tasks available to mark.")
+        print("\nNo tasks available to mark.\n")
     else:
-        print("=======| YOUR TASKS |=======")
+        print("\n=======| YOUR TASKS |=======\n")
         display_tasks()
                 
         n=int(input("\nEnter task number to complete: "))
@@ -51,10 +51,10 @@ def complete_task():                                                            
             save_tasks()
             print(f"Task {tasks[actual_index]['task']} marked as completed!")
         else:
-            print("Please enter a valid task number.")
+            print("Please enter a valid task number.\n")
                     
 def delete_task():                                                                           #DELETE TASK
-    print("\n============| Delete Task |============")
+    print("\n============| Delete Task |============\n")
             
     if not tasks:
         print("\nNo tasks available to delete.")

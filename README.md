@@ -17,7 +17,7 @@ A lightweight, persistent command-line task manager built with Python. This proj
 
 ## 🛠️ Tech Stack
 
-- **Language:** Python 3.x
+- **Language:** Python 3.X
 - **Standard Libraries:** `json` (data persistence), `sys` / built-in control flow
 
 ---

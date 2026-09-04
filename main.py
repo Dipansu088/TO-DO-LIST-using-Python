@@ -44,14 +44,19 @@ def complete_task():                                                            
         print("\n=======| YOUR TASKS |=======\n")
         display_tasks()
                 
-        n=int(input("\nEnter task number to complete: "))
-        if n>=1 and n<=len(tasks):
-            actual_index=n-1
-            tasks[actual_index]['completed']=True
-            save_tasks()
-            print(f"Task {tasks[actual_index]['task']} marked as completed!")
-        else:
-            print("Please enter a valid task number.\n")
+        while True:
+            try:
+                n=int(input("\nEnter task number to complete: "))
+                if n>=1 and n<=len(tasks):
+                    actual_index=n-1
+                    tasks[actual_index]['completed']=True
+                    save_tasks()
+                    print(f"Task {tasks[actual_index]['task']} marked as completed!")
+                    break
+                else:
+                    print(f"Please enter a valid task number (within {len(tasks)}).\n")
+            except ValueError:
+                print("Enter integer only!")
                     
 def delete_task():                                                                           #DELETE TASK
     print("\n============| Delete Task |============\n")
@@ -62,33 +67,43 @@ def delete_task():                                                              
         print("\n=======| YOUR TASKS |=======")
         display_tasks()
                 
-        n=int(input("\nEnter task number to delete: "))
-        if n>=1 and n<=len(tasks):
-            actual_index=n-1
-            deleted=tasks.pop(actual_index)
-            save_tasks()
-            print(f"Task '{deleted['task']}' deleted successfully!!")
+        while True:
+            try:
+                n=int(input("\nEnter task number to delete: "))
             
-        else:
-            print("Plz enter a valid task number.")
+                if n>=1 and n<=len(tasks):
+                    actual_index=n-1
+                    deleted=tasks.pop(actual_index)
+                    save_tasks()
+                    print(f"Task '{deleted['task']}' deleted successfully!!")
+                    break
+                else:
+                    print(f"Plz enter a valid task number(within {len(tasks)})!")
+            except ValueError:
+                print("Enter integer only!!")
                     
 def mark_incomplete():                                                                       #INCOMPLETE TASK
     print("\n============| Mark Incomplete |============")
             
     if not tasks:
         print("\nNo tasks available to mark.")
-    else:
-        print("\n=======| YOUR TASKS |=======")
-        display_tasks()
+        return
+    
+    print("\n=======| YOUR TASKS |=======")
+    display_tasks()
                     
-        n = int(input("\nEnter task number to mark incomplete: "))  
-        if n>=1 and n<=len(tasks):
-            actual_index=n-1
-            tasks[actual_index]['completed']=False
-            save_tasks()
-            print(f"Task {tasks[actual_index]['task']} marked as incomplete!")
-        else:
-            print("Please enter a valid task number.")
+    while True:
+        try:
+            n = int(input("\nEnter task number to mark incomplete: "))  
+            if n>=1 and n<=len(tasks):
+                actual_index=n-1
+                tasks[actual_index]['completed']=False
+                save_tasks()
+                print(f"Task {tasks[actual_index]['task']} marked as incomplete!")
+            else:
+                print(f"Please enter a valid task number(within {len(tasks)})!!!")
+        except ValueError:
+            print("Enter integer only!!!")
 
 def clear_tasks():
     tasks.clear()
